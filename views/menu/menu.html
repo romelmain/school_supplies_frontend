@@ -1,0 +1,29 @@
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="./views/menu/menu.css" />
+  <!-- Font Awesome Link for Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  />
+</head>
+<nav>
+  <!-- Checkbox for toggling menu -->
+  <input type="checkbox" id="check" />
+
+  <!-- Menu icon -->
+  <label for="check" class="checkbtn">
+    <i class="fas fa-bars"></i>
+  </label>
+
+  <!-- Site logo -->
+  <label class="logo">School Supplies</label>
+
+  <!-- Navigation links -->
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Products</a></li>
+    <li><a href="#">Settings</a></li>
+    <li id="opener"><a onclick="setLogoutDialog();" href="#">Logout</a></li>
+  </ul>
+</nav>
