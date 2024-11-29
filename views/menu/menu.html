@@ -6,6 +6,7 @@
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
   />
+  <script src="./views/menu/menu.js"></script>
 </head>
 <nav>
   <!-- Checkbox for toggling menu -->
@@ -22,8 +23,14 @@
   <!-- Navigation links -->
   <ul>
     <li><a href="#">Home</a></li>
-    <li><a href="#">Products</a></li>
-    <li><a href="#">Settings</a></li>
+    <li>
+      <a onclick="setPage('./views/products/products.html');" href="#"
+        >Products</a
+      >
+    </li>
+    <li>
+      <a href="#">Settings</a>
+    </li>
     <li id="opener"><a onclick="setLogoutDialog();" href="#">Logout</a></li>
   </ul>
 </nav>
