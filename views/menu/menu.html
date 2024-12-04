@@ -18,11 +18,13 @@
   </label>
 
   <!-- Site logo -->
-  <label class="logo">School Supplies</label>
+  <label class="logo" onclick="setPage('./views/welcome/welcome.html');"
+    >School Supplies</label
+  >
 
   <!-- Navigation links -->
   <ul>
-    <li><a href="#">Home</a></li>
+    <li><img id="ico-cart" width="35px" height="35px" src="./views/img/empty-cart.png"></img></li>
     <li>
       <a onclick="setPage('./views/products/products.html');" href="#"
         >Products</a

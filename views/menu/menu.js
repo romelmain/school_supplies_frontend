@@ -3,5 +3,10 @@ $(document).ready(function () {
 });
 
 function setPage(page) {
+  cleanPage();
   $("#divForm").load(page);
+}
+
+function cleanPage() {
+  $("#divForm,#divMessage,#divConfirm").empty();
 }
