@@ -3,6 +3,9 @@ $(document).ready(function () {
 
   $("#divLogout").dialog({
     autoOpen: false,
+    open: function (event, ui) {
+      $("button").addClass("ui-button ui-widget ui-corner-all");
+    },
     resizable: false,
     height: "auto",
     width: 400,
