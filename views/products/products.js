@@ -1,5 +1,16 @@
 $(document).ready(function () {
   console.log("products!!");
+  setModal(500, 500, "Product Detail");
+
+  $("#divModal").dialog("option", "buttons", [
+    {
+      text: "Ok",
+      icon: "ui-icon-heart",
+      click: function () {
+        $(this).dialog("close");
+      },
+    },
+  ]);
 
   getAllProducts();
 });
@@ -34,7 +45,9 @@ async function getAllProducts() {
         let colProductName = "";
         let colCartButtom = "";
         img =
-          "<img src='" +
+          "<img onclick='getAllProductsById(" +
+          product.id +
+          ")'  src='" +
           product.product.imagen +
           "' width='260px' height='260px' />";
         colImg = "<div class='col-sm-4'>" + img + "</div>";
@@ -103,6 +116,35 @@ async function addToCart(idProductoPrecio) {
       const json = await response.json();
       console.log(json);
       $("#ico-cart").attr("src", "./views/img/full-cart.png");
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+async function getAllProductsById(idProduct) {
+  let page = "./views/products/productDetail.html";
+  const myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+
+  const requestOptions = {
+    method: "GET",
+    headers: myHeaders,
+    redirect: "follow",
+  };
+
+  let row = "";
+
+  try {
+    const response = await fetch(
+      "http://localhost:8080/api/products/" + idProduct,
+      requestOptions
+    );
+    if (response.ok) {
+      const json = await response.json();
+      openModal(page, json);
+    } else {
+      console.log(response.status);
     }
   } catch (error) {
     console.log(error);
