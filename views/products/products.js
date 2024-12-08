@@ -89,7 +89,7 @@ async function addToCart(idProductoPrecio) {
   const date = new Date();
   const anio = date.getFullYear();
   const mes = ("0" + (date.getMonth() + 1)).slice(-2);
-  const dia = ("0" + date.getDay()).slice(-2);
+  const dia = ("0" + date.getDate()).slice(-2);
   const hora = ("0" + date.getHours()).slice(-2);
   const min = ("0" + date.getMinutes()).slice(-2);
   const seg = ("0" + date.getSeconds()).slice(-2);
