@@ -1,12 +1,19 @@
 $(document).ready(function () {
   console.log("products!!");
-  setModal(500, 500, "Product Detail");
+  setModal(500, 1200, "Product Detail");
 
   $("#divModal").dialog("option", "buttons", [
     {
-      text: "Ok",
-      icon: "ui-icon-heart",
+      text: "Cancel",
       click: function () {
+        $(this).dialog("close");
+      },
+    },
+    {
+      text: "Add to Cart",
+      click: function () {
+        const productId = $("#productId").val();
+        addToCart(productId);
         $(this).dialog("close");
       },
     },
@@ -38,6 +45,8 @@ async function getAllProducts() {
       let divContiner = $("div[class^='container']");
 
       json.map((product) => {
+        let page =
+          "./views/products/productDetail.html?id=" + product.product.id;
         let row = "<div class='row'>";
         let img = "";
         let colImg = "";
@@ -45,9 +54,9 @@ async function getAllProducts() {
         let colProductName = "";
         let colCartButtom = "";
         img =
-          "<img onclick='getAllProductsById(" +
-          product.id +
-          ")'  src='" +
+          "<img onclick='(getAllProductsById(" +
+          product.product.id +
+          "))'  src='" +
           product.product.imagen +
           "' width='260px' height='260px' />";
         colImg = "<div class='col-sm-4'>" + img + "</div>";
@@ -142,11 +151,36 @@ async function getAllProductsById(idProduct) {
     );
     if (response.ok) {
       const json = await response.json();
-      openModal(page, json);
+      const productHtml = setProductData(json);
+      openModal(productHtml);
     } else {
       console.log(response.status);
     }
   } catch (error) {
     console.log(error);
   }
+}
+
+function setProductData(data) {
+  console.log(data);
+
+  let container = "<div class='container'>";
+  let row = "<div class='row'>";
+  let col =
+    "<div class='col-sm-4'><img width='260px' height='260px' src='" +
+    data.product.imagen +
+    "'></img></div>";
+  col +=
+    "<div class='col-sm-4'>" +
+    data.product.nombre +
+    ": " +
+    data.precio +
+    "$</div>";
+  col += "<div class='col-sm-4'>" + data.product.descripcion + "</div>";
+  let input =
+    "  <input type='hidden' id='productId' name='productId' value='" +
+    data.id +
+    "' />";
+  let producto = container + row + col + "</div></div>" + input;
+  return producto;
 }

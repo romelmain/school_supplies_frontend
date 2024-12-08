@@ -9,6 +9,10 @@ function cleanPage() {
 
 function setModal(height, width, title) {
   $("#divModal").dialog({
+    open: function (event, ui) {
+      let button = $("[class='ui-dialog-buttonset'] > button");
+      button.addClass("ui-button ui-widget ui-corner-all");
+    },
     title: title,
     autoOpen: false,
     height: height,
@@ -20,10 +24,8 @@ function setModal(height, width, title) {
   });
 }
 
-function openModal(page, data) {
-  console.log(data);
-  $("#divModal").load(page, function () {
-    alert(data.product.id);
-  });
+function openModal(page) {
+  console.log(page);
+  $("#divModal").html(page);
   $("#divModal").dialog("open");
 }
