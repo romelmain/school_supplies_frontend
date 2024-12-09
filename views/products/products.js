@@ -125,6 +125,7 @@ async function addToCart(idProductoPrecio) {
       const json = await response.json();
       console.log(json);
       $("#ico-cart").attr("src", "./views/img/full-cart.png");
+      localStorage.setItem("idCart", json.id);
     }
   } catch (error) {
     console.log(error);

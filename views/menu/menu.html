@@ -7,6 +7,9 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
   />
   <script src="./views/menu/menu.js"></script>
+<script>
+  $("#ico-cart").tooltip();
+</script>
 </head>
 <nav>
   <!-- Checkbox for toggling menu -->
@@ -24,7 +27,7 @@
 
   <!-- Navigation links -->
   <ul>
-    <li><img id="ico-cart" width="35px" height="35px" src="./views/img/empty-cart.png"></img></li>
+    <li><img title="Cart Detail" onclick="setPage('./views/cart/cartDetail.html');" id="ico-cart" width="35px" height="35px" src="./views/img/empty-cart.png"></img></li>
     <li>
       <a onclick="setPage('./views/products/products.html');" href="#"
         >Products</a
