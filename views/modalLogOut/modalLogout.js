@@ -16,6 +16,7 @@ $(document).ready(function () {
       },
       Logout: function () {
         localStorage.removeItem("userid");
+        localStorage.removeItem("idCart");
         $(location).attr("href", "http://localhost:5500/index.html");
         $(this).dialog("close");
       },

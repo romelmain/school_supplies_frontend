@@ -1,5 +1,6 @@
 $(document).ready(function () {
   console.log("Cart Detail");
+  setHeader("Cart Detail");
   const idCart = localStorage.getItem("idCart");
   getCartDetail(idCart);
 });

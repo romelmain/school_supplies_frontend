@@ -1,5 +1,6 @@
 $(document).ready(function () {
   console.log("products!!");
+  setHeader("Products");
   setModal(500, 1200, "Product Detail");
 
   $("#divModal").dialog("option", "buttons", [
@@ -42,7 +43,7 @@ async function getAllProducts() {
     if (response.ok) {
       const json = await response.json();
       console.log(json);
-      let divContiner = $("div[class^='container']");
+      let divContiner = $("#divProducts");
 
       json.map((product) => {
         let page =
@@ -74,6 +75,7 @@ async function getAllProducts() {
           ");'><button type='button' class='btn btn-primary'>Add to cart</button></div>";
         row += colImg + colProductName + colPrice + colCartButtom + "</div>";
         divContiner.append(row);
+        divContiner.addClass("scrollDiv");
       });
     } else {
       console.log(response.status);

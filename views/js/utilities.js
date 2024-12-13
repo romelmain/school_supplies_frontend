@@ -4,7 +4,7 @@ function setPage(page) {
 }
 
 function cleanPage() {
-  $("#divForm,#divMessage,#divConfirm,#divModal").empty();
+  $("#divForm,#divMessage,#divConfirm,#divModal,#divHeader").empty();
 }
 
 function setModal(height, width, title) {
@@ -28,4 +28,12 @@ function openModal(page) {
   console.log(page);
   $("#divModal").html(page);
   $("#divModal").dialog("open");
+}
+
+function setHeader(header) {
+  html =
+    "<div class='container'> <div class='row'> <div class='col'></div> <div class='col'>";
+  html += "<center><label >" + header + "</label></center>";
+  html += "</div></div></div>";
+  $("#divHeader").html(html);
 }

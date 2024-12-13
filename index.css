@@ -1,0 +1,15 @@
+#divHeader {
+  background-color: rgba(0, 132, 255, 0.422);
+  color: aliceblue;
+  font-weight: 500;
+}
+
+.scrollDiv {
+  height: 450px;
+  width: 100%;
+  overflow-y: scroll;
+}
+
+#divProducts::-webkit-scrollbar {
+  display: none; /* Ocultar scroll */
+}
