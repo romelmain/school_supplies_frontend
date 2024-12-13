@@ -24,7 +24,11 @@ async function login() {
     if (response.ok) {
       const json = await response.json();
       console.log(json);
-      localStorage.setItem("userid", json.id);
+      localStorage.setItem("userid", json.user.id);
+      if (json.cartId > 0) {
+        localStorage.setItem("idCart", json.cartId);
+      }
+
       $(location).attr("href", "http://localhost:5500/index.html");
     } else {
       console.log(response.status);
