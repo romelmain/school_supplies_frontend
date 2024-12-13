@@ -33,7 +33,7 @@ function openModal(page) {
 function setHeader(header) {
   html =
     "<div class='container'> <div class='row'> <div class='col'></div> <div class='col'>";
-  html += "<center><label >" + header + "</label></center>";
+  html += "<center><label id='labelHeader'>" + header + "</label></center>";
   html += "</div></div></div>";
   $("#divHeader").html(html);
 }

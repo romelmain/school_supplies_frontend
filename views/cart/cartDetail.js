@@ -1,6 +1,6 @@
 $(document).ready(function () {
   console.log("Cart Detail");
-  setHeader("Cart Detail");
+
   const idCart = localStorage.getItem("idCart");
   getCartDetail(idCart);
 });
@@ -26,8 +26,8 @@ async function getCartDetail(idCart) {
       const json = await response.json();
       console.log(json);
 
-      let divContiner = $("div[class^='container']");
-      $("#labelCart").text(json.date);
+      let divContiner = $("#divCartDetail");
+      setHeader("Cart Detail: " + json.date);
 
       json.listProductPrice.map((cart) => {
         let page = "./views/products/productDetail.html?id=" + cart.product.id;
