@@ -37,22 +37,34 @@ async function getCartDetail(idCart) {
         let colPrice = "";
         let colProductName = "";
         let colCartButtom = "";
+        let colCantidad = "";
+        let colPricePay = "";
         let colExtra = "<div class='col'></div>";
         img =
           "<img align='right'   src='" +
           cart.product.imagen +
           "' width='30px' height='30px' />";
-        colImg = "<div class='col-sm-1 '>" + img + "</div>";
-        colProductName =
-          "<div class='col-sm-4'><b>Product Name:</b>" +
-          cart.product.nombre +
-          "</div>";
+        colImg = "<div class='col '>" + img + "</div>";
+        colProductName = "<div class='col'>" + cart.product.nombre + "</div>";
         colPrice =
-          "<div class='col-sm-2'><label align='left'><b>Price:</b></label>  " +
+          "<div class='col d-flex justify-content-center'>  " +
           cart.precio +
           " $</div>";
+        colCantidad =
+          "<div class='col d-flex justify-content-center'>" +
+          cart.cantidad +
+          "</div>";
+        colPricePay =
+          "<div class='col d-flex justify-content-center'>" +
+          cart.cantidad * cart.precio +
+          "</div>";
         row +=
-          colExtra + colImg + colProductName + colPrice + colExtra + "</div>";
+          colImg +
+          colProductName +
+          colPrice +
+          colCantidad +
+          colPricePay +
+          "</div>";
         divContiner.append(row);
       });
     } else {
