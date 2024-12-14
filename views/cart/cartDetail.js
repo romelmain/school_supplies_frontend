@@ -65,9 +65,11 @@ async function getCartDetail(idCart) {
           colCantidad +
           colPricePay +
           "</div>";
+        $("#divHeaderCartDetail").attr("style", "display: block");
         divContiner.append(row);
       });
     } else {
+      $("#divHeaderCartDetail").attr("style", "display: none");
       console.log(response.status);
     }
   } catch (error) {
