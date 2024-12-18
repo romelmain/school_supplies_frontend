@@ -29,47 +29,47 @@ async function getCartDetail(idCart) {
       let divContiner = $("#divCartDetail");
       setHeader("Cart Detail: " + json.date);
 
+      let table = "<table class='table'>";
+      let thead =
+        "<thead>" +
+        "<tr>" +
+        "<th scope='col'></th>" +
+        "<th scope='col'>Product</th>" +
+        "<th scope='col'>Item Price</th>" +
+        "<th scope='col'>Quantity</th>" +
+        "<th scope='col'>Price to Pay</th>" +
+        "</tr>" +
+        "</thead>";
+      let tbody = "<tbody>";
+      let endTable = "</tbody></table>";
+      let row = "";
       json.listProductPrice.map((cart) => {
-        let page = "./views/products/productDetail.html?id=" + cart.product.id;
-        let row = "<div class='row'>";
-        let img = "";
-        let colImg = "";
-        let colPrice = "";
-        let colProductName = "";
-        let colCartButtom = "";
-        let colCantidad = "";
-        let colPricePay = "";
-        let colExtra = "<div class='col'></div>";
-        img =
+        let img =
           "<img align='right'   src='" +
           cart.product.imagen +
           "' width='30px' height='30px' />";
-        colImg = "<div class='col '>" + img + "</div>";
-        colProductName = "<div class='col'>" + cart.product.nombre + "</div>";
-        colPrice =
-          "<div class='col d-flex justify-content-center'>  " +
-          cart.precio +
-          " $</div>";
-        colCantidad =
-          "<div class='col d-flex justify-content-center'>" +
-          cart.cantidad +
-          "</div>";
-        colPricePay =
-          "<div class='col d-flex justify-content-center'>" +
-          cart.cantidad * cart.precio +
-          "</div>";
-        row +=
+        let tr = "<tr>";
+        let colImg = "<td>" + img + "</td>";
+        let colProduct = "<td>" + cart.product.nombre + "</td>";
+        let colItemPrice = "<td>" + cart.precio + "</td>";
+        let colQuantity = "<td>" + cart.cantidad + "</td>";
+        let colPriceToPay = "<td>" + cart.cantidad * cart.precio + "</td>";
+        let endTr = "</tr>";
+
+        row =
+          row +
+          tr +
           colImg +
-          colProductName +
-          colPrice +
-          colCantidad +
-          colPricePay +
-          "</div>";
-        $("#divHeaderCartDetail").attr("style", "display: block");
-        divContiner.append(row);
+          colProduct +
+          colItemPrice +
+          colQuantity +
+          colPriceToPay +
+          endTr;
       });
+
+      let products = table + thead + tbody + row + endTable;
+      divContiner.append(products);
     } else {
-      $("#divHeaderCartDetail").attr("style", "display: none");
       console.log(response.status);
     }
   } catch (error) {
