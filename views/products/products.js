@@ -45,9 +45,51 @@ async function getAllProducts() {
       console.log(json);
       let divContiner = $("#divProducts");
 
+      let rowCard = "<div class='row row-cols-4'>";
+      let count = 0;
+      let nn = 3;
+      let row = "";
       json.map((product) => {
         let page =
           "./views/products/productDetail.html?id=" + product.product.id;
+
+        if (count == 0) {
+          row = row + rowCard;
+        }
+
+        img =
+          "<img class='card-img-top' onclick='(getAllProductsById(" +
+          product.product.id +
+          "))'  src='" +
+          product.product.imagen +
+          "' width='260px' height='260px' />";
+        col =
+          "<div class='col'>" +
+          "<div class='card h-100'>" +
+          img +
+          "<div class='card-body'>" +
+          "<h5 class='card-title'>Product Name:" +
+          "</h5>" +
+          "<p class='card-text'>" +
+          product.product.nombre +
+          "</p>" +
+          "</div>" +
+          "<div class='card-footer'>" +
+          "<small class='text-muted'><strong>Price:</strong> " +
+          product.precio +
+          " $</small>" +
+          "</div>" +
+          "</div>" +
+          "</div>";
+        row = row + col;
+
+        if (count < nn) {
+          count = count + 1;
+        } else if (count == nn) {
+          row = row + "</div>";
+          count = 0;
+        }
+        /*
         let row = "<div class='row'>";
         let img = "";
         let colImg = "";
@@ -74,9 +116,18 @@ async function getAllProducts() {
           product.id +
           ");'><button type='button' class='btn btn-primary'>Add to cart</button></div>";
         row += colImg + colProductName + colPrice + colCartButtom + "</div>";
-        divContiner.append(row);
-        divContiner.addClass("scrollDiv");
+
+        */
+        //console.log(row);
+        //divContiner.append(row);
+        //divContiner.addClass("scrollDiv");
+        console.log(row);
+        console.log(product.product.nombre);
       });
+
+      //console.log(row);
+      divContiner.append(row);
+      divContiner.addClass("scrollDiv");
     } else {
       console.log(response.status);
     }
