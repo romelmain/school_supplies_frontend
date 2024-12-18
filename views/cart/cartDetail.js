@@ -29,7 +29,7 @@ async function getCartDetail(idCart) {
       let divContiner = $("#divCartDetail");
       setHeader("Cart Detail: " + json.date);
 
-      let table = "<table class='table'>";
+      let table = "<table class='table table table-hover table-striped'>";
       let thead =
         "<thead>" +
         "<tr>" +
@@ -51,9 +51,9 @@ async function getCartDetail(idCart) {
         let tr = "<tr>";
         let colImg = "<td>" + img + "</td>";
         let colProduct = "<td>" + cart.product.nombre + "</td>";
-        let colItemPrice = "<td>" + cart.precio + "</td>";
+        let colItemPrice = "<td>" + cart.precio + " $</td>";
         let colQuantity = "<td>" + cart.cantidad + "</td>";
-        let colPriceToPay = "<td>" + cart.cantidad * cart.precio + "</td>";
+        let colPriceToPay = "<td>" + cart.cantidad * cart.precio + " $</td>";
         let endTr = "</tr>";
 
         row =
