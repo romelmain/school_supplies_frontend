@@ -1,7 +1,7 @@
 $(document).ready(function () {
   console.log("products!!");
   setHeader("Products");
-  setModal(500, 1200, "Product Detail");
+  setModal(450, 1000, "Product Detail");
 
   $("#divModal").dialog("option", "buttons", [
     {
@@ -89,38 +89,7 @@ async function getAllProducts() {
           row = row + "</div>";
           count = 0;
         }
-        /*
-        let row = "<div class='row'>";
-        let img = "";
-        let colImg = "";
-        let colPrice = "";
-        let colProductName = "";
-        let colCartButtom = "";
-        img =
-          "<img onclick='(getAllProductsById(" +
-          product.product.id +
-          "))'  src='" +
-          product.product.imagen +
-          "' width='260px' height='260px' />";
-        colImg = "<div class='col-sm-4'>" + img + "</div>";
-        colProductName =
-          "<div class='col-sm-4'><b>Product Name:</b>" +
-          product.product.nombre +
-          "</div>";
-        colPrice =
-          "<div class='col-sm-2'><label><b>Price:</b></label>  " +
-          product.precio +
-          " $</div>";
-        colCartButtom =
-          "<div class='col-sm-2' onclick='addToCart(" +
-          product.id +
-          ");'><button type='button' class='btn btn-primary'>Add to cart</button></div>";
-        row += colImg + colProductName + colPrice + colCartButtom + "</div>";
 
-        */
-        //console.log(row);
-        //divContiner.append(row);
-        //divContiner.addClass("scrollDiv");
         console.log(row);
         console.log(product.product.nombre);
       });
@@ -218,6 +187,7 @@ async function getAllProductsById(idProduct) {
 function setProductData(data) {
   console.log(data);
 
+  /*
   let container = "<div class='container'>";
   let row = "<div class='row'>";
   let col =
@@ -236,5 +206,33 @@ function setProductData(data) {
     data.id +
     "' />";
   let producto = container + row + col + "</div></div>" + input;
+  return producto;
+  */
+  let container = "<div class='container'>";
+  let row = "<div class='row'>";
+  let colImg =
+    "<div class='col-sm-4'><img width='260px' height='260px' src='" +
+    data.product.imagen +
+    "'></img></div>";
+  let colData =
+    "<div class='card' style='width: 35rem;'>" +
+    "<h5>Product Name:</h5>" +
+    "<h6>" +
+    data.product.nombre +
+    "</h6>" +
+    "<h5>Description:</h5>" +
+    "<h6>" +
+    data.product.descripcion +
+    "</h6>" +
+    "<h5>Price:</h5>" +
+    "<h6>" +
+    data.precio +
+    " $</h6>" +
+    "</div></div>";
+  let input =
+    "<input type='hidden' id = 'productId' name = 'productId' value = '" +
+    data.id +
+    "' >";
+  let producto = container + row + colImg + colData + "</div></div>" + input;
   return producto;
 }
