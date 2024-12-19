@@ -43,6 +43,7 @@ async function getCartDetail(idCart) {
       let tbody = "<tbody>";
       let endTable = "</tbody></table>";
       let row = "";
+      let total = 0;
       json.listProductPrice.map((cart) => {
         let img =
           "<img align='right'   src='" +
@@ -65,9 +66,14 @@ async function getCartDetail(idCart) {
           colQuantity +
           colPriceToPay +
           endTr;
+        total = total + cart.cantidad * cart.precio;
       });
-
-      let products = table + thead + tbody + row + endTable;
+      let colTotal =
+        "<tr><td colspan='4' align='right'><strong>Total:</strong></td><td style='color:blue;'>" +
+        total +
+        " $</td></tr>";
+      console.log("Total " + total);
+      let products = table + thead + tbody + row + colTotal + endTable;
       divContiner.append(products);
     } else {
       console.log(response.status);
