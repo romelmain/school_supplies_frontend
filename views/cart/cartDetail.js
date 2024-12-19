@@ -52,9 +52,9 @@ async function getCartDetail(idCart) {
         let tr = "<tr>";
         let colImg = "<td>" + img + "</td>";
         let colProduct = "<td>" + cart.product.nombre + "</td>";
-        let colItemPrice = "<td>" + cart.precio + " $</td>";
+        let colItemPrice = "<td>$ " + cart.precio + "</td>";
         let colQuantity = "<td>" + cart.cantidad + "</td>";
-        let colPriceToPay = "<td>" + cart.cantidad * cart.precio + " $</td>";
+        let colPriceToPay = "<td>$ " + cart.cantidad * cart.precio + "</td>";
         let endTr = "</tr>";
 
         row =
@@ -69,9 +69,9 @@ async function getCartDetail(idCart) {
         total = total + cart.cantidad * cart.precio;
       });
       let colTotal =
-        "<tr><td colspan='4' align='right'><strong>Total:</strong></td><td style='color:blue;'>" +
+        "<tr><td colspan='4' align='right'><strong>Total:</strong></td><td style='color:blue;'>$ " +
         total +
-        " $</td></tr>";
+        "</td></tr>";
       console.log("Total " + total);
       let products = table + thead + tbody + row + colTotal + endTable;
       divContiner.append(products);

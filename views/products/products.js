@@ -75,9 +75,9 @@ async function getAllProducts() {
           "</p>" +
           "</div>" +
           "<div class='card-footer'>" +
-          "<small class='text-muted'><strong>Price:</strong> " +
+          "<small class='text-muted'><strong>Price:</strong> $ " +
           product.precio +
-          " $</small>" +
+          "</small>" +
           "</div>" +
           "</div>" +
           "</div>";
@@ -225,9 +225,9 @@ function setProductData(data) {
     data.product.descripcion +
     "</h6>" +
     "<h5>Price:</h5>" +
-    "<h6>" +
+    "<h6> $ " +
     data.precio +
-    " $</h6>" +
+    "</h6>" +
     "</div></div>";
   let input =
     "<input type='hidden' id = 'productId' name = 'productId' value = '" +
